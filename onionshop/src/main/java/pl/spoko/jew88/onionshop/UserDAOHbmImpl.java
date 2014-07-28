@@ -13,18 +13,15 @@ public class UserDAOHbmImpl implements UserDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	@Override
 	public User getUser(int id) {
 		User user = (User) sessionFactory.getCurrentSession().get(User.class, id);
 		return user;
 	}
 
-	@Override
 	public void saveUser(User user) {
 		sessionFactory.getCurrentSession().save(user);
 	}
 
-	@Override
 	public List<User> getAll() {
 		return sessionFactory.getCurrentSession().createCriteria(User.class).list();
 	}
