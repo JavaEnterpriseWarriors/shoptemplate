@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
 
-
+	@Autowired
 	private UserService userService;
 	
-	@Inject
 	public HomeController(UserService userService){
 		this.userService = userService;
 	}
