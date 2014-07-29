@@ -14,14 +14,24 @@ public class HomeController {
 	@Autowired
 	private UserService userService;
 	
+	public HomeController(){}
+
 	public HomeController(UserService userService){
-		this.userService = userService;
+		this.setUserService(userService);
 	}
 	
 	@RequestMapping({"/", "/home"})
 	public String showHomePage(Map<String, Object> model){
-		model.put("getall", userService.getAllUsers());
+		model.put("getall", getUserService().getAllUsers());
 		return "home";
+	}
+
+	public UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}
 	
 }
