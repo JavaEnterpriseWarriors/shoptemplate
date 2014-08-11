@@ -19,5 +19,6 @@
 			</c:forEach>
 		</ol>
 	</div>
+	<a href="registration">Zarejestruj sie w Hapajto!</a>
 </body>
 </html>

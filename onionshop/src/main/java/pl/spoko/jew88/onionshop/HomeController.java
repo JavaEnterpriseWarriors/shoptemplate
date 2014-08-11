@@ -20,7 +20,7 @@ public class HomeController {
 		this.setUserService(userService);
 	}
 	
-	@RequestMapping({"/", "/home"})
+	@RequestMapping(value="/")
 	public String showHomePage(Map<String, Object> model){
 		model.put("getall", getUserService().getAllUsers());
 		return "home";
