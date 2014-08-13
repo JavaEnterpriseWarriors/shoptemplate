@@ -43,6 +43,10 @@ public class User {
 		this.setPhoneNumber(phoneNumber);
 	}
 
+	public int getId() {
+		return id;
+	}
+
 	public String getUsername() {
 		return username;
 	}
