@@ -17,7 +17,7 @@ public class Storage {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "id")
+	@Column(name = "STORAGE_ID")
 	private int id;
 	
 	@OneToMany
