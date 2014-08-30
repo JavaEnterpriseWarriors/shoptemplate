@@ -42,4 +42,8 @@ public class StorageDAOImpl implements StorageDAO {
 		this.sessionFactory = sessionFactory;
 	}
 
+	public void updateStorage(Storage storage) {
+		sessionFactory.getCurrentSession().update(storage);
+	}
+
 }
