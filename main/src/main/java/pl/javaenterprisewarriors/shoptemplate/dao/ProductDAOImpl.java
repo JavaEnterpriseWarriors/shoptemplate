@@ -4,9 +4,11 @@ import java.util.Collection;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import pl.javaenterprisewarriors.shoptemplate.domain.Product;
 
+@Repository
 public class ProductDAOImpl implements ProductDAO {
 
 	@Autowired

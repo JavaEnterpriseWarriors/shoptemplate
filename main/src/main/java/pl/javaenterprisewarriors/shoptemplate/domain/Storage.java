@@ -20,8 +20,8 @@ public class Storage {
 	@Column(name = "STORAGE_ID")
 	private int id;
 	
-	@OneToMany
-	@JoinColumn(name = "PRODUCT_ID")
+	@OneToMany(mappedBy = "product_id")
+	//@JoinColumn(name = "PRODUCT_ID")
 	private Collection<Product> products = new ArrayList<Product>();
 	
 	public Storage(){}
