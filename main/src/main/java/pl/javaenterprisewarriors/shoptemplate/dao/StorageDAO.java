@@ -11,4 +11,6 @@ public interface StorageDAO {
 	public Storage getStorage(int id);
 	
 	public Collection<Product> getAllProductInStorage(int id);
+	
+	public void updateStorage(Storage storage);
 }
