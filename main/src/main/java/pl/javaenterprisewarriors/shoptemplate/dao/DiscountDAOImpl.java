@@ -1,5 +1,6 @@
 package pl.javaenterprisewarriors.shoptemplate.dao;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -27,7 +28,8 @@ public class DiscountDAOImpl implements DiscountDAO {
 		return null;
 	}
 
-	public List<Discount> getAllDiscounts() {
+	@SuppressWarnings("unchecked")
+	public Collection<Discount> getAllDiscounts() {
 		return sessionFactory.getCurrentSession()
 				.createCriteria(Discount.class).list();
 	}
