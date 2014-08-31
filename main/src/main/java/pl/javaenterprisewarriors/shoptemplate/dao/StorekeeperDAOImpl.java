@@ -1,9 +1,11 @@
 package pl.javaenterprisewarriors.shoptemplate.dao;
 
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import pl.javaenterprisewarriors.shoptemplate.domain.Storekeeper;
 
+@Repository
 public class StorekeeperDAOImpl implements StorekeeperDAO {
 
 	private SessionFactory sessionFactory;

@@ -2,9 +2,11 @@ package pl.javaenterprisewarriors.shoptemplate.dao;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import pl.javaenterprisewarriors.shoptemplate.domain.Category;
 
+@Repository
 public class CategoryDAOImpl implements CategoryDAO {
 
 	@Autowired

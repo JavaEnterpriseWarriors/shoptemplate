@@ -17,7 +17,7 @@ public class MainJava {
 		ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml"); 
 		Product product = new Product("wpierdol", 100);
 		productService.addProduct(product);
-		Product product2 = productService.getProduct(product.getProduct_id());
+		Product product2 = productService.getProduct(product.getId());
 		if (product.getName().equals(product2.getName())) System.out.println("YYYYYEEEAAAAHHH!!!!");
 	}
 

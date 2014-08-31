@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -12,7 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "STORAGE")
+@Table(name = "STORAGES")
 public class Storage {
 
 	@Id
@@ -20,8 +21,7 @@ public class Storage {
 	@Column(name = "STORAGE_ID")
 	private int id;
 	
-	@OneToMany(mappedBy = "product_id")
-	//@JoinColumn(name = "PRODUCT_ID")
+	@OneToMany(mappedBy="name")
 	private Collection<Product> products = new ArrayList<Product>();
 	
 	public Storage(){}

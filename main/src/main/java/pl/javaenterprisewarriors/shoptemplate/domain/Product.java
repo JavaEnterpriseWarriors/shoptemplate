@@ -7,34 +7,34 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PRODUCT")
+@Table(name = "PRODUCTS")
 public class Product {
 	
 	@Id
 	@GeneratedValue
 	@Column(name = "PRODUCT_ID")
-	private int product_id;
+	private int id;
 	
 	@Column(name = "NAME")
 	private String name;
 	
 	@Column(name = "PRICE")
-	private int price;
+	private double price;
 	
 	public Product(){}
 	
-	public Product(String name, int price)
+	public Product(String name, double price)
 	{
 		this.name = name;
 		this.price = price;
 	}
 
-	public int getProduct_id() {
-		return product_id;
+	public int getId() {
+		return id;
 	}
 
-	public void setProduct_id(int product_id) {
-		this.product_id = product_id;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -45,11 +45,11 @@ public class Product {
 		this.name = name;
 	}
 
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 }

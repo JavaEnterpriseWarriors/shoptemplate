@@ -6,12 +6,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="CATEGORY")
+@Table(name="CATEGORYS")
 public class Category {
 
 	@Id
@@ -22,8 +21,7 @@ public class Category {
 	@Column(name="NAME")
 	private String name;
 	
-	@OneToMany
-	@JoinColumn(name="CATEGORY_ID")
+	@OneToMany(mappedBy="id")
 	private Collection<Category> subCategorys;
 	
 	public Category(){}
