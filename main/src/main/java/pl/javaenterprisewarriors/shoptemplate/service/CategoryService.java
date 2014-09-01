@@ -1,7 +1,5 @@
 package pl.javaenterprisewarriors.shoptemplate.service;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,10 +21,16 @@ public class CategoryService {
 	}
 	
 	@Transactional
-	public Collection<Category> getSubCategorys(int id)
+	public void addCategory(Category category)
+	{
+		categoryDAO.addCategory(category);
+	}
+	
+	@Transactional
+	public Category getParentCategory(int id)
 	{
 		Category category = getCategory(id);
-		return category.getSubCategorys();
+		return category.getParentCategory();
 	}
 
 	public CategoryDAO getCategoryDAO() {

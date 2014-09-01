@@ -20,7 +20,7 @@ public class Storage {
 	@Column(name = "STORAGE_ID")
 	private int id;
 	
-	@ManyToMany(cascade = CascadeType.PERSIST)
+	@ManyToMany(cascade = CascadeType.ALL)
 	private Collection<Product> products = new ArrayList<Product>();
 	
 	public Storage(){}

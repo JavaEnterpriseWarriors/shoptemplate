@@ -1,16 +1,16 @@
 package pl.javaenterprisewarriors.shoptemplate.domain;
 
-import java.util.Collection;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name="CATEGORYS")
+@Table(name="CATEGORIES")
 public class Category {
 
 	@Id
@@ -21,14 +21,18 @@ public class Category {
 	@Column(name="NAME")
 	private String name;
 	
-	@OneToMany(mappedBy="id")
-	private Collection<Category> subCategorys;
+//	@OneToMany(mappedBy="id")
+//	private Collection<Category> subCategorys;
+	
+	@ManyToOne(targetEntity = Category.class)
+	@JoinColumn(referencedColumnName="CATEGORY_ID", nullable=true)
+	private Category parentCategory;
 	
 	public Category(){}
-	public Category(String name, Collection<Category> subCategorys)
+	public Category(String name, Category parentCategory)
 	{
 		this.name = name;
-		this.subCategorys = subCategorys;
+		this.parentCategory = parentCategory;
 	}
 	public int getId() {
 		return id;
@@ -42,10 +46,10 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Collection<Category> getSubCategorys() {
-		return subCategorys;
+	public Category getParentCategory() {
+		return parentCategory;
 	}
-	public void setSubCategorys(Collection<Category> subCategorys) {
-		this.subCategorys = subCategorys;
+	public void setParentCategory(Category parentCategory) {
+		this.parentCategory = parentCategory;
 	}
 }
