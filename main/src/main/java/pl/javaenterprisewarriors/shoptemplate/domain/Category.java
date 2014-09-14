@@ -21,9 +21,6 @@ public class Category {
 	@Column(name="NAME")
 	private String name;
 	
-//	@OneToMany(mappedBy="id")
-//	private Collection<Category> subCategorys;
-	
 	@ManyToOne(targetEntity = Category.class)
 	@JoinColumn(referencedColumnName="CATEGORY_ID", nullable=true)
 	private Category parentCategory;
