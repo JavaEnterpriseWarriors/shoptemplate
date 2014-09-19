@@ -20,13 +20,17 @@ public class Storage {
 	@Column(name = "STORAGE_ID")
 	private int id;
 	
+	@Column(name= "STORAGE_NAME")
+	private String name;
+	
 	@ManyToMany(cascade = CascadeType.ALL)
 	private Collection<Product> products = new ArrayList<Product>();
 	
 	public Storage(){}
 	
-	public Storage(Collection<Product> products)
+	public Storage(String name, Collection<Product> products)
 	{
+		this.name = name;
 		this.products = products;
 	}
 
@@ -36,6 +40,16 @@ public class Storage {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public String getName()
+	{
+		return name;
+	}
+	
+	public void setName(String name)
+	{
+		this.name = name;
 	}
 
 	public Collection<Product> getProducts() {

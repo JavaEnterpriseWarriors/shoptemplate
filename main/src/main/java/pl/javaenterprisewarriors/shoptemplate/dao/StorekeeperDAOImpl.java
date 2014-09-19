@@ -1,6 +1,7 @@
 package pl.javaenterprisewarriors.shoptemplate.dao;
 
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import pl.javaenterprisewarriors.shoptemplate.domain.Storekeeper;
@@ -8,8 +9,9 @@ import pl.javaenterprisewarriors.shoptemplate.domain.Storekeeper;
 @Repository
 public class StorekeeperDAOImpl implements StorekeeperDAO {
 
+	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	public void addStorekeepr(Storekeeper storekeeper) {
 		sessionFactory.getCurrentSession().save(storekeeper);
 	}
@@ -19,7 +21,12 @@ public class StorekeeperDAOImpl implements StorekeeperDAO {
 	}
 
 	public Storekeeper getStorekeeper(int id) {
-		return (Storekeeper)sessionFactory.getCurrentSession().get(Storekeeper.class, id);
+		return (Storekeeper) sessionFactory.getCurrentSession().get(
+				Storekeeper.class, id);
+	}
+
+	public void deleteStorekeeper(Storekeeper storekeeper) {
+		sessionFactory.getCurrentSession().delete(storekeeper);
 	}
 
 	public SessionFactory getSessionFactory() {

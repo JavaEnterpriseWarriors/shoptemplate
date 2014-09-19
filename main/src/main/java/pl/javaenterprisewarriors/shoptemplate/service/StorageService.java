@@ -23,7 +23,7 @@ public class StorageService {
 	}
 	
 	@Transactional
-	public void addAllProducts(int id, Product product)
+	public void addProduct(int id, Product product)
 	{
 		Storage storage = storageDAO.getStorage(id);
 		storage.getProducts().add(product);
@@ -53,6 +53,30 @@ public class StorageService {
 		}
 		
 		return result;
+	}
+	
+	@Transactional
+	public void addStorage(Storage storage)
+	{
+		storageDAO.addStorage(storage);
+	}
+	
+	@Transactional
+	public Storage getStorage(int id)
+	{
+		return storageDAO.getStorage(id);
+	}
+	
+	@Transactional
+	public int getStorageIdByName(String name)
+	{
+		return storageDAO.getStorageIdByName(name);
+	}
+	
+	@Transactional
+	public void deleteStorage(int id)
+	{
+		storageDAO.delateStorage(id);
 	}
 	
 	public StorageDAO getStorageDAO() {

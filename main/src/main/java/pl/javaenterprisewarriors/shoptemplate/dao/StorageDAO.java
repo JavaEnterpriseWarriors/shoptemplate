@@ -10,6 +10,10 @@ public interface StorageDAO {
 	
 	public Storage getStorage(int id);
 	
+	public int getStorageIdByName(String name);
+	
+	public void delateStorage(int id);
+	
 	public Collection<Product> getAllProductInStorage(int id);
 	
 	public void updateStorage(Storage storage);

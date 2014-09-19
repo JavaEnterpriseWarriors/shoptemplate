@@ -32,8 +32,6 @@ public class StorageDAOImpl implements StorageDAO {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Product.class);
 		criteria.add(Restrictions.in("id", idCollection));
 		return criteria.list();
-		//TODO napewno da siê tolepiej rozwi¹zaæ
-		//return sessionFactory.getCurrentSession().createQuery("Select * From PRODUCT where PRODUCT_ID in (Select PRODUCT_ID From STORAGE Where STORAGE_ID="+id+")").list();
 	}
 
 	public SessionFactory getSessionFactory() {
@@ -46,6 +44,17 @@ public class StorageDAOImpl implements StorageDAO {
 
 	public void updateStorage(Storage storage) {
 		sessionFactory.getCurrentSession().update(storage);
+	}
+
+	public void delateStorage(int id) {
+		Storage storage = getStorage(id);
+		sessionFactory.getCurrentSession().delete(storage);
+	}
+
+	public int getStorageIdByName(String name) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Storage.class);
+		criteria.add(Restrictions.ilike("name", name));
+		return ((Storage)criteria.list().get(0)).getId();
 	}
 
 }
