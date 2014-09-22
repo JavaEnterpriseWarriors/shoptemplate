@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import pl.javaenterprisewarriors.shoptemplate.domain.Category;
+import pl.javaenterprisewarriors.utils.HibernateUtils;
 
 @Repository
 public class CategoryDAOImpl implements CategoryDAO {
@@ -16,12 +17,17 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	@Autowired
+	private HibernateUtils hibernateUtils;
+	
 	public void addCategory(Category category) {
-		sessionFactory.getCurrentSession().save(category);
+		hibernateUtils.addElement(category);
 	}
 
 	public Category getCategory(int id) {
-		return (Category)sessionFactory.getCurrentSession().get(Category.class, id);
+		//return (Category)sessionFactory.getCurrentSession().get(Category.class, id);
+		Category category = hibernateUtils.getElement(Category.class, id);
+		return ;
 	}
 
 	public void upadteCategory(Category category) {
