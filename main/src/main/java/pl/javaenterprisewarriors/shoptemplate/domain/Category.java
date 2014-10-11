@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import pl.javaenterprisewarriors.shoptemplate.annotations.NotForTO;
+
 
 @Entity
 @Table(name="CATEGORIES")
@@ -16,6 +18,7 @@ public class Category {
 	@Id
 	@GeneratedValue
 	@Column(name="CATEGORY_ID")
+	@NotForTO
 	private int id;
 	
 	@Column(name="NAME")
@@ -23,6 +26,7 @@ public class Category {
 	
 	@ManyToOne(targetEntity = Category.class)
 	@JoinColumn(referencedColumnName="CATEGORY_ID", nullable=true)
+	@NotForTO
 	private Category parentCategory;
 	
 	public Category(){}

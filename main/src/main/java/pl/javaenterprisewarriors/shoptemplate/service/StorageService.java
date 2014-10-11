@@ -41,9 +41,10 @@ public class StorageService {
 	@Transactional
 	public Product getProduct(int storageId, int productId)
 	{
-		Storage storage = storageDAO.getStorage(storageId);
+		
+		Collection<Product> storageProducts = storageDAO.getAllProductInStorage(storageId);
 		Product result=null;
-		for(Product product:storage.getProducts())
+		for(Product product:storageProducts)
 		{
 			if(product.getId()==productId)
 			{
@@ -59,6 +60,14 @@ public class StorageService {
 	public void addStorage(Storage storage)
 	{
 		storageDAO.addStorage(storage);
+	}
+	
+	@Transactional
+	public void deleteProductsFromStorage(int id)
+	{
+		Storage storage = getStorage(id);
+		storage.setProducts(null);
+		storageDAO.updateStorage(storage);
 	}
 	
 	@Transactional
@@ -78,7 +87,7 @@ public class StorageService {
 	{
 		storageDAO.delateStorage(id);
 	}
-	
+
 	public StorageDAO getStorageDAO() {
 		return storageDAO;
 	}

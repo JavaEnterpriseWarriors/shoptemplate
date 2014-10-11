@@ -6,10 +6,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import pl.javaenterprisewarriors.shoptemplate.annotations.NotForTO;
+
 @Entity
 @Table(name = "PRODUCTS")
 public class Product {
 	
+	@NotForTO
 	@Id
 	@GeneratedValue
 	@Column(name = "PRODUCT_ID")
@@ -19,7 +22,7 @@ public class Product {
 	private String name;
 	
 	@Column(name = "PRICE")
-	private double price;
+	private Double price;
 	
 	public Product(){}
 	
@@ -45,11 +48,11 @@ public class Product {
 		this.name = name;
 	}
 
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 }

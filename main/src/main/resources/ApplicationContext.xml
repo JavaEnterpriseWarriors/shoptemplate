@@ -18,6 +18,7 @@
 		<property name="packagesToScan">
 			<list>
 				<value>pl.javaenterprisewarriors.shoptemplate.domain</value>
+				<value>pl.javaenterprisewarriors.shoptemplate.utils</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

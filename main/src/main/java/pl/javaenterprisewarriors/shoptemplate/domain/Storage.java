@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import pl.javaenterprisewarriors.shoptemplate.annotations.NotForTO;
+
 @Entity
 @Table(name = "STORAGES")
 public class Storage {
@@ -18,12 +20,14 @@ public class Storage {
 	@Id
 	@GeneratedValue
 	@Column(name = "STORAGE_ID")
+	@NotForTO
 	private int id;
 	
 	@Column(name= "STORAGE_NAME")
 	private String name;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
+	@NotForTO
 	private Collection<Product> products = new ArrayList<Product>();
 	
 	public Storage(){}

@@ -9,59 +9,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import pl.javaenterprisewarriors.shoptemplate.domain.Category;
-import pl.javaenterprisewarriors.utils.HibernateUtils;
+import pl.javaenterprisewarriors.shoptemplate.utils.HibernateUtils;
 
 @Repository
 public class CategoryDAOImpl implements CategoryDAO {
 
-	@Autowired
-	private SessionFactory sessionFactory;
-	
-	@Autowired
-	private HibernateUtils hibernateUtils;
-	
 	public void addCategory(Category category) {
-		hibernateUtils.addElement(category);
+		HibernateUtils.addElement(category);
 	}
 
 	public Category getCategory(int id) {
-		//return (Category)sessionFactory.getCurrentSession().get(Category.class, id);
-		Category category = hibernateUtils.getElement(Category.class, id);
-		return ;
+		return HibernateUtils.getElement(Category.class, id);
 	}
 
 	public void upadteCategory(Category category) {
-		sessionFactory.getCurrentSession().update(category);
-		//sessionFactory.getCurrentSession().flush();
-	}
-
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
+		HibernateUtils.updateElement(category);
 	}
 
 	public void deleteCategory(Category category) {
-		sessionFactory.getCurrentSession().clear();
-		sessionFactory.getCurrentSession().delete(category);
+		HibernateUtils.deleteElement(category);
 	}
 
 	//Safe cast hibernate make shure that list contains only Category objects
 	@SuppressWarnings("unchecked")
 	public List<Category> getAllSubCategories(int id) {
-		Category category = (Category)sessionFactory.getCurrentSession().get(Category.class,id);
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Category.class);
+		Category category = (Category)HibernateUtils.getCurrentSession().get(Category.class,id);
+		Criteria criteria = HibernateUtils.getCurrentSession().createCriteria(Category.class);
 		criteria.add(Restrictions.like("parentCategory", category));
 		
 		return criteria.list();
 	}
 
-	//Safe cast hibernate make shure that list contains only Category objects
-	@SuppressWarnings("unchecked")
 	public List<Category> getAllCategories() {
-		return sessionFactory.getCurrentSession().createCriteria(Category.class).list();
+		return (List<Category>) HibernateUtils.getAllElements(Category.class);
 	}
 
 }

@@ -6,12 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import pl.javaenterprisewarriors.shoptemplate.annotations.NotForTO;
+
 @Entity
 @Table(name="STOREKEEPERS")
 public class Storekeeper {
 	@Id
 	@GeneratedValue
 	@Column(name="STOREKEEPER_ID")
+	@NotForTO
 	private int id;
 	
 	@Column(name="NAME")
